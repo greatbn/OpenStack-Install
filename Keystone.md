@@ -40,34 +40,36 @@ Cài đặt keystone
 		@hourly /usr/bin/keystone-manage token_flush >/var/log/keystone/
 		keystone-tokenflush.log 2>&1
 </ul>
-Tạo tenants, users, và roles
+<ul>
+- Tạo tenants, users, và roles
 		export OS_SERVICE_TOKEN = ADMIN_TOKEN (nãy tạo và ghi trong file cấu hình keystone)
 		export OS_SERVICE_ENDPOINT=http://controller:35357/v2.0
-	+ tạo admin tenant 
+<li>tạo admin tenant </li>
 		keystone tenant-create --name admin --description "Admin Tenant"
 		
-	+ tạo admin user
+<li>tạo admin user</li>
 		keystone user-create --name admin --pass saphi --email saphi070@gmail.com
-	+ tạo admin role
+<li>tạo admin role</li>
 		keystone role-create --name admin
-	+ thêm admin role  cho admin tenant và user
+<li>thêm admin role  cho admin tenant và user</li>
 		keystone user-role-add --user admin --tenant admin --role admin
-	+ tạo demo tenant 
+<li>tạo demo tenant </li>
 		keystone tenant-create --name demo --description "Demo Tenant"
 		
-	+ tạo demo user dưới demo tenant
+<li>tạo demo user dưới demo tenant</li>
 		keystone user-create --name demo --tenant demo --pass saphi --email saphi070@gmail.com
-	+ tạo service tenant
+<li>tạo service tenant</li>
 		keystone tenant-create --name service --description "Service Tenant"
-	+ tạo service identity
+<li>tạo service identity</li>
 		keystone service-create --name keystone --type identity --description "OpenStack Identity"
-	+ tạo identity service api endpoints
+<li>tạo identity service api endpoints</li>
 		keystone endpoint-create \
 		--service-id $(keystone service-list | awk '/ identity / {print $2}') \
 		--publicurl http://controller:5000/v2.0 \
 		--internalurl http://controller:5000/v2.0 \
 		--adminurl http://controller:35357/v2.0 \
 		--region regionOne
-	+Xác thực hệ thống
-		+ unset OS_SERVICE_TOKEN và OS_SERVICE_ENDPOINT
-			unset OS_SERVICE_TOKEN OS_SERVICE_ENDPOINT
+</ul>
+Xác thực hệ thống
+		unset OS_SERVICE_TOKEN và OS_SERVICE_ENDPOINT
+		unset OS_SERVICE_TOKEN OS_SERVICE_ENDPOINT
