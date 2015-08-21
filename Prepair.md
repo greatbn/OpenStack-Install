@@ -61,22 +61,22 @@ khởi động mysql:
  
 Note: cài đặt pass root: 
 
-	`mysql_secure_install`
+	mysql_secure_install
 	
 *Cài đặt messaging server: sử dụng rabbitMQ*
 
-	`apt-get install rabbitmq-server -y`
+	apt-get install rabbitmq-server -y
 	
 Cấu hình RabbitMQ
 
-	`rabbitmqctl change_password guest pass`
+	rabbitmqctl change_password guest pass
 	
 ** Đặt pass cho guest hãy nhớ pass này**
 
 check RabbitMQ running
 
-	`rabbitmqctl status | grep rabbit`
+	rabbitmqctl status | grep rabbit
 	
 restart rabbitmq-server
 
-	`service rabbitmq-server restart`
+	service rabbitmq-server restart
