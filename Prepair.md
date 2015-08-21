@@ -16,28 +16,28 @@ Sửa file: /etc/ntp.conf
 Khai báo: 
 
 
-		```sh
+		
 		server NTP_SERVERiburst
 		restrict -4 default kod notrap nomodify
 		restrict -6 default kod notrap nomodify
-		```
+		
 
 		
 Khởi động lại NTP
 
-	`service ntp restart`
+	service ntp restart
 	
 *Cài đặt repo OpenStack*
 
-		`apt-get install ubuntu-cloud-keyring`
+		apt-get install ubuntu-cloud-keyring
 		
 tạo file /etc/apt/sources.list.d/cloudarchive-huno.list nội dung:
 
-		`deb http://ubuntu-cloud.archive.canonical.com/ubuntu trusty-updates/juno main`
+		deb http://ubuntu-cloud.archive.canonical.com/ubuntu trusty-updates/juno main
 		
 Update
  
-		`apt-get update && apt-get dist-upgrade -y`
+		apt-get update && apt-get dist-upgrade -y
 		
 * Cài đặt database*
 
@@ -45,7 +45,7 @@ Update
  
 Cấu hình database /etc/mysql/my.cnf
  
-	```sh
+	
 	[mysqld]
 	bind-address = 10.10.10.11
 	default-storage-engine = innodb
@@ -53,7 +53,7 @@ Cấu hình database /etc/mysql/my.cnf
 	collation-server = utf8_general_ci
 	init-connect = 'SET NAMES utf8'
 	character-set-server = utf8
-	```sh
+	
 	
 khởi động mysql: 
  
