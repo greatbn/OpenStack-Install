@@ -1,13 +1,21 @@
 #Cài Đặt Keystone
+
+
 `mysql -u root -p`
+
 *Gõ password user root MariaDB*
+
 Tạo database keystone
+
 `create database keystone`
+
 Tạo user keystone và set quyền trên database keystone
+
 ```sh
 grant all privileges on keystone.* to 'keystone'@'localhost' identity by PASS
 grant all privileges on keystone.* to 'keystone'@'%' identity by PASS
 ```
+
 *thay PASS bằng pass keystone của bạn*
 
 Cài đặt keystone
