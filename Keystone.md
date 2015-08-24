@@ -20,12 +20,12 @@ Cài đặt keystone
 `apt-get install keystone python-keystoneclient -y`
 
 - Cấu hình keystone
-<ul>
-<li>tạo admin token bằng openssl</li>
+
+tạo admin token bằng openssl
 
 `openssl rand -hex 10`
 
-<li>Sửa file /etc/keystone/keystone.conf</li>
+Sửa file /etc/keystone/keystone.conf
 ```sh
 			[DEFAULT]
 			admin_token = ADMIN_TOKEN (chuỗi tạo ở trên)
@@ -40,66 +40,66 @@ Cài đặt keystone
 			verbose = True
 ```
 
-<li>Chạy lệnh đồng bộ database</li>
+Chạy lệnh đồng bộ database
 
 			`su -s /bin/sh -c "keystone-manage db_sync" keystone`
 
-<li>restart keystone</li>
+restart keystone
 
 			`service keystone restart`
 			
-<li>xóa sqlite database</li>
+xóa sqlite database
 			`rm -f /var/lib/keystone/keystone.db`
-<li>sử dụng crontab để thay đổi token của admin sau 1h</li>
+sử dụng crontab để thay đổi token của admin sau 1h
 		tạo file /var/spool/cron/crontabs/keystone nội dung
 		
 		
 		@hourly /usr/bin/keystone-manage token_flush >/var/log/keystone/
 		keystone-tokenflush.log 2>&1
 		
-</ul>
-<ul>
-<li>Tạo tenants, users, và roles</li>
+
+
+Tạo tenants, users, và roles
 
 ```sh
 export OS_SERVICE_TOKEN = ADMIN_TOKEN (nãy tạo và ghi trong file cấu hình keystone)
 export OS_SERVICE_ENDPOINT=http://controller:35357/v2.0
 ```
 
-<li>tạo admin tenant </li>
+tạo admin tenant 
 
 ` keystone tenant-create --name admin --description "Admin Tenant" `
 		
-<li>tạo admin user</li>
+tạo admin user
 		
 `keystone user-create --name admin --pass saphi --email saphi070@gmail.com`
 		
-<li>tạo admin role</li>
+tạo admin role
 		
 `keystone role-create --name admin`
 		
-<li>thêm admin role  cho admin tenant và user</li>
+thêm admin role  cho admin tenant và user
 
 `keystone user-role-add --user admin --tenant admin --role admin`
 		
-<li>tạo demo tenant </li>
+tạo demo tenant 
 
 `keystone tenant-create --name demo --description "Demo Tenant"`
 		
 		
-<li>tạo demo user dưới demo tenant</li>
+tạo demo user dưới demo tenant
 
 `keystone user-create --name demo --tenant demo --pass saphi --email saphi070@gmail.com`
 		
-<li>tạo service tenant</li>
+tạo service tenant
 
 `keystone tenant-create --name service --description "Service Tenant"`
 		
-<li>tạo service identity</li>
+tạo service identity
 
 `keystone service-create --name keystone --type identity --description "OpenStack Identity"`
 		
-<li>tạo identity service api endpoints</li>
+tạo identity service api endpoints
 
 ```sh
 keystone endpoint-create \
@@ -110,7 +110,7 @@ keystone endpoint-create \
 --region regionOne
 ```		
 		
-</ul>
+
 Xác thực hệ thống
 
 ```sh
