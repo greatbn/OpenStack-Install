@@ -7,13 +7,13 @@
 
 Tạo database keystone
 
-`create database keystone`
+`create database keystone;`
 
 Tạo user keystone và set quyền trên database keystone
 
 ```sh
-grant all privileges on keystone.* to 'keystone'@'localhost' identity by PASS
-grant all privileges on keystone.* to 'keystone'@'%' identity by PASS
+grant all privileges on keystone.* to 'keystone'@'localhost' identified by 'PASS';
+grant all privileges on keystone.* to 'keystone'@'%' identified by 'PASS';
 ```
 
 *thay PASS bằng pass keystone của bạn*
@@ -69,7 +69,7 @@ keystone-tokenflush.log 2>&1
 Tạo tenants, users, và roles
 
 ```sh
-export OS_SERVICE_TOKEN = ADMIN_TOKEN (nãy tạo và ghi trong file cấu hình keystone)
+export OS_SERVICE_TOKEN=ADMIN_TOKEN (nãy tạo và ghi trong file cấu hình keystone)
 export OS_SERVICE_ENDPOINT=http://controller:35357/v2.0
 ```
 

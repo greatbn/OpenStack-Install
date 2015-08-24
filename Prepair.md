@@ -17,7 +17,7 @@ Khai báo:
 
 
 		
-		server NTP_SERVERiburst
+		server NTP_SERVER iburst
 		restrict -4 default kod notrap nomodify
 		restrict -6 default kod notrap nomodify
 		
@@ -31,7 +31,7 @@ Khởi động lại NTP
 
 		apt-get install ubuntu-cloud-keyring
 		
-tạo file /etc/apt/sources.list.d/cloudarchive-huno.list nội dung:
+tạo file /etc/apt/sources.list.d/cloudarchive-juno.list nội dung:
 
 		deb http://ubuntu-cloud.archive.canonical.com/ubuntu trusty-updates/juno main
 		
